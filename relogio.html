@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: darkcyan;
+        }
+        main {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        span {
+            font-size: 50px;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .hora, .minuto, .segundo {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <main class="main">
+        <span class="hora"></span>
+        <span>:</span>
+        <span class="minuto"></span>
+        <span>:</span>
+        <span class="segundo"></span>
+    </main>
+
+
+
+    <script>
+        let main = document.querySelector(".main")
+        let hora = document.querySelector(".hora");
+        let minuto = document.querySelector(".minuto");
+        let segundo = document.querySelector(".segundo");
+
+        const gerar_cor = () => {
+            let r = Math.random() * 255;
+            let g = Math.random() * 255;
+            let b = Math.random() * 255;
+
+            main.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        }
+
+                
+        const formatTime = (time) => {
+            if (time < 10) {
+                return `0 ${time}`;
+            } else {
+                return time
+            }
+        }
+
+        setInterval(() => {
+            let datas = new Date();
+            let horas = datas.getHours();
+            let minutos =  datas.getMinutes();
+            let segundos = datas.getSeconds();
+
+
+            hora.innerHTML = `${formatTime(horas)}`;
+            minuto.innerHTML = `${formatTime(minutos)}`;
+            segundo.innerHTML = `${formatTime(segundos)}`;
+
+            gerar_cor();
+        }, 1000);
+
+    </script>
+</body>
+</html>
